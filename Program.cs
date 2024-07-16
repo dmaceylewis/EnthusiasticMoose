@@ -6,19 +6,20 @@ void Main()
     Console.WriteLine("--------------------------------------------");
     Console.WriteLine();
 
-    // Let the moose speak!
+    /* Let the moose speak! */
     MooseSays("H I, I'M  E N T H U S I A S T I C !");
     MooseSays("I really am enthusiastic");
 
-    // Ask a question
-    CanadaQuestion();
-    EnthusiasticQuestion();
-    LoveCSharpQuestion();
-    SecretQuestion();
+    /* Ask a question */
+    MooseResponse("Is Canada real?", "Really? It seems very unlikely.", "I  K N E W  I T !!!");
+    MooseResponse("Are you enthuastic?", "Yay!", "You should try it!");
+    MooseResponse("Do you love C# yet?", "Good job sucking up to your instructor!", "You will...oh, yes, you will...");
+    MooseResponse("Do you want to know a secret?", "ME TOO!!!! I love secrets...tell me one!", "Oh, no...secrets are the best, I love to share them!");
 }
 
 
-// Message
+/* Message */
+// String interpolation - ${message} => specify the kind of message and assign a parameter
 void MooseSays(string message)
 {
     Console.WriteLine($@"
@@ -51,7 +52,7 @@ void MooseSays(string message)
     ");
 }
 
-// Let the moose ask questions!
+/* Let the moose ask questions! => True or False */
 bool MooseAsks(string question)
 {
     Console.Write($"{question} (Y/N): ");
@@ -73,55 +74,12 @@ bool MooseAsks(string question)
     }
 }
 
-// Questions
-void CanadaQuestion()
+/* Questions */
+void MooseResponse(string question, string yesAnswer, string noAnswer) //we're looking for 3 string upon execution
 {
-    bool isTrue = MooseAsks("Is Canada real?");
-    if (isTrue)
-    {
-        MooseSays("Really? It seems very unlikely.");
-    }
-    else
-    {
-        MooseSays("I  K N E W  I T !!!");
-    }
-}
+    bool isQuestionTrue = MooseAsks(question);
 
-void EnthusiasticQuestion()
-{
-    bool isEnthusiastic = MooseAsks("Are you enthusiastic?");
-    if (isEnthusiastic)
-    {
-        MooseSays("Yay!");
-    }
-    else
-    {
-        MooseSays("You should try it!");
-    }
-}
+    string answer = isQuestionTrue ? yesAnswer : noAnswer;
 
-void LoveCSharpQuestion()
-{
-    bool doesLoveCSharp = MooseAsks("Do you love C# yet?");
-    if (doesLoveCSharp)
-    {
-        MooseSays("Good job sucking up to your instructor!");
-    }
-    else
-    {
-        MooseSays("You will...oh, yes, you will...");
-    }
-}
-
-void SecretQuestion()
-{
-    bool wantsSecret = MooseAsks("Do you want to know a secret?");
-    if (wantsSecret)
-    {
-        MooseSays("ME TOO!!!! I love secrets...tell me one!");
-    }
-    else
-    {
-        MooseSays("Oh, no...secrets are the best, I love to share them!");
-    }
+    MooseSays(answer);
 }
